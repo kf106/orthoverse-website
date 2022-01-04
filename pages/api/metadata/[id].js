@@ -1,6 +1,29 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { useRouter } from 'next/router'
 
+
+function hexToLat (input) {
+  let result = "";
+  if (parseInt(input[0], 16) < 15) {
+    result = result + "+";
+  } else {
+    result = result + "+";
+  }
+  result = result + Math.floor(parseInt(input.slice(1,4), 16)*90/4095) + "." + parseInt(input.slice(4,10), 16)
+  return result;
+}
+
+function hexToLong (input) {
+  let result = "";
+  if (parseInt(input[0], 16) < 15) {
+    result = result + "+";
+  } else {
+    result = result + "+";
+  }
+  result = result + Math.floor(parseInt(input.slice(1,4), 16)*180/4095) + "." + parseInt(input.slice(4,10), 16);
+  return result;
+}
+
 export default function handler(req, res) {
 
   const id = req.query.id;
@@ -19,15 +42,17 @@ export default function handler(req, res) {
     if (shortId.length != 64) {
       res.status(404).send('Error 404');
     } else {
+      const Lat = hexToLat(shortId.slice(-20));
+      const Long = hexToLong(shortId.slice(-40).slice(0, 20));
       const metadata = {
         "attributes": [
           {
               "trait_type": "Latitude",
-              "value": shortId.slice(-20),
+              "value": Lat,
           },
           {
               "trait_type": "Longitude",
-              "value": shortId.slice(-40).slice(0, 20)
+              "value": Long,
           }
         ],
         "external_url": "https://pict.fi/",
