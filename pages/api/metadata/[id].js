@@ -29,11 +29,11 @@ export default function handler(req, res) {
   const id = req.query.id;
   if ( id == 'contract.json') {
       const contract = {
-          "name": "PICT NFT Collection",
-          "description": "The PICT NFT collection provides a unique NFT for each and every Ethereum address that exists or can ever exist",
-          "image": "https://pict.fi/logo.png",
-          "external_link": "https://pict.fi/",
-          "seller_fee_basis_points": 500,
+          "name": "The Orthoverse Land Collection",
+          "description": "The Orthoverse is the largest NFT collection in existence, with over 1.4 quindecillion tokens in existence. Every Ethereum address already has an NFT representing a parcel of land in the Orthoverse. Vist our site to reveal your NFT and to learn more about the project.",
+          "image": "https://orthoverse.io/logo.png",
+          "external_link": "https://orthoverse.io/",
+          "seller_fee_basis_points": 250,
           "fee_recipient": "0x2Ccc96B3690F88F05b1B99319c4eCfce033Dddd5"
         }
       res.status(200).json(contract)
@@ -55,10 +55,10 @@ export default function handler(req, res) {
               "value": Long,
           }
         ],
-        "external_url": "https://pict.fi/",
+        "external_url": "https://orthoverse.io/",
         "name": "0x" + shortId.slice(-40),
-        "description": "PICT NFT for address 0x" + shortId.slice(-40),
-        "image": "https://pict.fi/api/img/" + shortId.slice(-40) + ".png",
+        "description": "Orthoverse Land for 0x" + shortId.slice(-40),
+        "image": "https://orthoverse.io/api/img/" + shortId.slice(-40) + ".png",
         }
       res.status(200).json(metadata)
     }
