@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div>
+        <div className={styles.background}>
           <div>
           <Image 
             className={styles.landingImage}

@@ -2,6 +2,14 @@
   padding: 0 2rem;
 }
 
+
+.background {
+  background-color: #acacac;
+  padding: 0 2rem;
+  border: 1px solid #acacac;
+  border-radius: 10px;
+}
+
 .landingImage {
   z-index: -1;
 }
@@ -51,7 +59,7 @@
 
 .title {
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-  color: #550022;
+  color: #000;
   text-align: center;
 }
 
