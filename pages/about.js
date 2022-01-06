@@ -26,9 +26,9 @@ export default function About() {
                  with a different image into every Ethereum address that exists,
                  or ever will exist.</p>
               <p>Your personal ORTH token can already be seen on the Ethereum blockchain,
-                 and on this site on the <Link href="/reveal"><a className={styles.inlink}>Reveal</a></Link> page.</p>
+                 and on this site on the <Link href="/reveal" passHref><a className={styles.inlink}>Reveal</a></Link> page.</p>
               <p>However, in order to view and trade it on NFT sales and
-                 auctions platforms, you should got to the <Link href="/reveal"><a className={styles.inlink}>Reveal</a></Link> page and 
+                 auctions platforms, you should got to the <Link href="/reveal" passHref><a className={styles.inlink}>Reveal</a></Link> page and 
                  submit one cheap transaction.</p>
               <p>And we mean cheap. Have a look at the following comparisons:</p>
               <ul>
@@ -45,7 +45,7 @@ export default function About() {
 
           <div className={styles.textalign}>
           <div className={styles.grid}>
-            <Link href="/"><a>
+            <Link href="/" passHref><a>
             <div className={styles.card}>
               <h2>Back &larr;</h2>
               <p>Return to the home page</p>

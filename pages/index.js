@@ -27,13 +27,13 @@ export default function Home() {
 
           <div className={styles.textalign}>
           <div className={styles.grid}>
-            <Link href="/about"><a>
+            <Link href="/about" passHref><a>
             <div className={styles.card}>
               <h2>Read more &rarr;</h2>
-              <p>Find out more about this 1.5 quadricillion NFT token airdrop</p>
+              <p>Find out more about this 1.5 quindecillion NFT token airdrop</p>
             </div>
             </a></Link>
-            <Link href="/reveal">
+            <Link href="/reveal" passHref>
             <div className={styles.card}>
               <h2>Reveal your NFT &rarr;</h2>
               <p>See what your NFT looks like and make it visible to others</p>
