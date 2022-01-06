@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
@@ -34,7 +33,7 @@ export default function Home() {
               <p>Find out more about this 1.5 quadricillion NFT token airdrop</p>
             </div>
             </a></Link>
-            <Link href="">
+            <Link href="/reveal">
             <div className={styles.card}>
               <h2>Reveal your NFT &rarr;</h2>
               <p>See what your NFT looks like and make it visible to others</p>
