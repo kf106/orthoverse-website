@@ -34,6 +34,7 @@ export default function Home() {
             </div>
           </div>
 
+          <div className={styles.textalign}>
           <div className={styles.grid}>
             <a href="https://nextjs.org/docs" className={styles.card}>
               <h2>Read more &rarr;</h2>
@@ -44,6 +45,7 @@ export default function Home() {
               <h2>Reveal your NFT &rarr;</h2>
               <p>See what your NFT looks like and make it visible to others</p>
             </a>
+          </div>
           </div>
         </div>
       </main>
