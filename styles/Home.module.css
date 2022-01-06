@@ -11,6 +11,10 @@
   z-index: -1;
 }
 
+.textalign {
+  text-align: center;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -61,8 +65,14 @@
 }
 
 .description {
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 1.1rem;
   color: #000;
   text-align: center;
+  display: inline-block;
+
 }
 
 .description {

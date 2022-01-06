@@ -26,22 +26,25 @@ export default function Home() {
             <h1 className={styles.title}>
               Welcome to the Orthoverse
             </h1>
-         </div>
-        <p className={styles.description}>
-          Where everyone already owns their land NFT
-        </p>
+          </div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Read more &rarr;</h2>
-            <p>Find out more about the 1.5 quadricillion NFT token airdrop</p>
-          </a>
+          <div className={styles.textalign}>
+            <div className={styles.description}>
+              Where everyone already owns their land NFT
+            </div>
+          </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Reveal your NFT &rarr;</h2>
-            <p>See what your NFT looks like and make it visible to others</p>
-          </a>
-        </div>
+          <div className={styles.grid}>
+            <a href="https://nextjs.org/docs" className={styles.card}>
+              <h2>Read more &rarr;</h2>
+              <p>Find out more about this 1.5 quadricillion NFT token airdrop</p>
+            </a>
+
+            <a href="https://nextjs.org/learn" className={styles.card}>
+              <h2>Reveal your NFT &rarr;</h2>
+              <p>See what your NFT looks like and make it visible to others</p>
+            </a>
+          </div>
         </div>
       </main>
 
