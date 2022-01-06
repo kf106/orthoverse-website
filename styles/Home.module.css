@@ -2,6 +2,10 @@
   padding: 0 2rem;
 }
 
+.landingImage {
+  z-index: -1;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -45,8 +49,14 @@
   font-size: 4rem;
 }
 
-.title,
+.title {
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  color: #550022;
+  text-align: center;
+}
+
 .description {
+  color: #ffffff;
   text-align: center;
 }
 
@@ -74,6 +84,7 @@
 }
 
 .card {
+  background: #fafafa;
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;
