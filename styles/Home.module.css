@@ -1,10 +1,6 @@
+
 .container {
   padding: 0 2rem;
-}
-
-
-.background {
-
 }
 
 .landingImage {
@@ -78,6 +74,14 @@
   font-size: 1.5rem;
 }
 
+.description p {
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
 .code {
   background: #fafafa;
   border-radius: 5px;
@@ -108,9 +112,15 @@
   max-width: 300px;
 }
 
+.inlink {
+  color: #009aee;
+  text-decoration: none;
+}
+
 .card:hover,
 .card:focus,
 .card:active {
+  background: #dadafa;
   color: #0070f3;
   border-color: #0070f3;
 }
@@ -121,7 +131,6 @@
 }
 
 .card p {
-  margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
 }
@@ -136,4 +145,8 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.libold {
+  font-weight: bold;
 }

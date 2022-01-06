@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -12,16 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.background}>
-          <div>
-          <Image 
-            className={styles.landingImage}
-            src="/assets/background.jpg"
-            layout="fill"
-            objectFit="cover"
-          />
-          </div>
-
+        <div>
           <div>
             <h1 className={styles.title}>
               Welcome to the Orthoverse
@@ -36,15 +28,18 @@ export default function Home() {
 
           <div className={styles.textalign}>
           <div className={styles.grid}>
-            <a href="https://nextjs.org/docs" className={styles.card}>
+            <Link href="/about"><a>
+            <div className={styles.card}>
               <h2>Read more &rarr;</h2>
               <p>Find out more about this 1.5 quadricillion NFT token airdrop</p>
-            </a>
-
-            <a href="https://nextjs.org/learn" className={styles.card}>
+            </div>
+            </a></Link>
+            <Link href="">
+            <div className={styles.card}>
               <h2>Reveal your NFT &rarr;</h2>
               <p>See what your NFT looks like and make it visible to others</p>
-            </a>
+            </div>
+            </Link>
           </div>
           </div>
         </div>
