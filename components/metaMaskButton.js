@@ -5,6 +5,11 @@ import MetaMaskImg from '../public/metamask.svg';
 import { formatAddress } from '../utils/utils.js';
 
 function MetaMaskButton( { account } ) {
+
+  if (account == '0x0000000000000000000000000000000000000000') {
+    account = '';
+  }
+  
   return (
     <Button className="w-64 h-10"
       disableElevation

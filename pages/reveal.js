@@ -5,8 +5,9 @@ import styles from '../styles/Home.module.css'
 
 import { useState, useEffect } from 'react';
 import Web3Modal from 'web3modal';
+import { ethers } from 'ethers';
 import { nftchain, nftparams, contractAddress, host } from '../nft.config';
-import ABI from '../abi/Orthoverse.json';
+import Orthoverse from '../abi/Orthoverse.json';
 import MetaMaskButton from '../components/metaMaskButton';
 import RevealButton from '../components/revealButton';
 
@@ -93,12 +94,58 @@ const myLoader = () => {
   return host + "/api/img/" + mmaccount.slice(2, 42) + ".png"
 }
 
-function checkReveal(account) {
-  
+async function checkReveal(account) {
+  const web3Modal = new Web3Modal();
+  const connection = await web3Modal.connect();
+  const prov = new ethers.providers.Web3Provider(connection);
+  const signer = prov.getSigner();
+  const contract = new ethers.Contract(contractAddress, Orthoverse.abi, signer);
+  const revealState = await contract.isRevealed();
+  if (revealState != 0) {
+    setRevealed('revealed');
+  }
 }
 
-function revealNFT(account) {
-  
+async function revealNFT(account) {
+  setRevealed('revealing');
+  const web3Modal = new Web3Modal();
+  const connection = await web3Modal.connect();
+  const provider = new ethers.providers.Web3Provider(connection);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(contractAddress, Orthoverse.abi, signer);
+  try {
+    const transaction = await contract.reveal();
+    transaction.wait()
+    .then(response => {
+      console.log("Transaction response:")
+      console.log(response)
+      if (response.events[0].transactionHash !== undefined) {
+        const event = response.events[0]
+        const txHash = event.transactionHash
+        console.log("Transaction hash is " + txHash)
+        setRevealed('revealed')
+      } else {
+        setRevealed("rejected")
+        console.log("Transaction was rejected by user")
+      }
+    })
+    .catch (ex => {
+      setRevealed("rejected")
+      console.log("Transaction was rejected by user")
+      console.error(ex);
+    });
+  } catch(ex) {
+    if (ex.message == "MetaMask Tx Signature: User denied transaction signature.") {
+      setRevealed("rejected")
+      console.log("Transaction was rejected by user")
+  } else if (ex.data.message.startsWith("err: insufficient funds")) {
+    setRevealed("insufficient");
+    console.log("User has insufficient funds")
+  } else {
+    console.log("Caught unexpected transaction error")
+    console.log(ex);
+    }
+  }
 }
 
   return (
@@ -131,14 +178,14 @@ function revealNFT(account) {
               <a href="https://metamask.io/"> MetaMask </a>
               plugin.
             </div>       
-            <p style={{ display: (provider && !connected) ?  'block' : 'none' }}>
+            <div style={{ display: (provider && !connected) ?  'block' : 'none' }}>
               Connect your MetaMask wallet to the { nftchain } blockchain.
-            </p>
-            <p style={{ display: (provider && connected) ?  'block' : 'none' }}>
+            </div>
+            <div style={{ display: (provider && connected) ?  'block' : 'none' }}>
               You are connected to the { nftchain } blockchain.
-            </p>
+            </div>
             <div style={{ display: provider ? 'block' : 'none' }}>
-              <div onClick={() => connectMetaMask() }>
+              <div className="mt-4" onClick={() => connectMetaMask() }>
                 <MetaMaskButton account={ mmaccount } />
               </div>
             </div>
@@ -151,11 +198,11 @@ function revealNFT(account) {
                 <span className={styles.libold}>Step Two:</span>
               </div>
               <div>
-                <p>
+                <div>
                   This is what your ORTH token looks like. There is no other token exactly the same.
-                </p>
-                <div className={styles.grid}>
-                  <div className={styles.nft}>
+                </div>
+
+                  <div>
                     <Image
                       loader={ myLoader }
                       src={ mmaccount.slice(2,42)}
@@ -164,17 +211,17 @@ function revealNFT(account) {
                       height="360"
                     />
                   </div>
-                </div>
-                <p>
+
+                <div>
                   Click the button below to reveal your token (involves a small Ethereum transaction):
-                </p>
+                </div>
                 { (revealed == 'hidden') && (
-                  <div onClick={() => revealNFT() }>
+                  <div className="mt-4" onClick={() => revealNFT() }>
                     <RevealButton state={ revealed } />
                   </div>
                 )}
                 { (revealed != 'hidden') && (
-                  <div>
+                  <div className="mt-4" >
                     <RevealButton state={ revealed } />
                   </div>
                 )}
@@ -211,14 +258,14 @@ function revealNFT(account) {
           <li style={{ display: (connected && (revealed == 'revealed')) ?  'block' : 'none' }}>
             <div>
               <div>
-                <span className={styles.libold}>Step Two:</span>
+                <span className={styles.libold}>Revealed!</span>
               </div>
               <div>
-                <p>
-                  Your NFT has been revealed and can be seen on NFT auction platforms such as OpenSea:
-                </p>
-                <div className={styles.grid}>
-                  <div className={styles.nft}>
+                <div>
+                  Your NFT is revealed and can be seen on NFT auction platforms such as OpenSea.
+                </div>
+
+                  <div>
                     <Image
                       loader={ myLoader }
                       src={ mmaccount.slice(2,42)}
@@ -227,7 +274,7 @@ function revealNFT(account) {
                       height="360"
                     />
                   </div>
-                </div>
+
               </div>
             </div>
           </li>

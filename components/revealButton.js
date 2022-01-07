@@ -19,7 +19,15 @@ function RevealButton( { state } ) {
       variant='contained'
       color='secondary'
     >
-      <div><Image src={ ortho } alt="Reveal NFT" height="30px" width="30px"/></div>
+      <div>
+        <Image 
+          src={ ortho }
+          alt="Reveal NFT"
+          height="30px"
+          width="30px"
+          className={( stateText[state] == 'Revealing...' ) ? 'animate-spin' : ''}
+      />
+      </div>
       <Typography variant='button'>
         { stateText[state] }
       </Typography>
