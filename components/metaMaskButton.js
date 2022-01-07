@@ -11,7 +11,7 @@ function MetaMaskButton( { account } ) {
       variant='contained'
       color='secondary'
     >
-      <div className="flex p-1 align-baseline"><Image src={ MetaMaskImg } alt="MetaMask" height="30px" width="30px"/></div>
+      <div><Image src={ MetaMaskImg } alt="MetaMask" height="30px" width="30px"/></div>
       <Typography variant='button'>
         { (account) ? formatAddress(account) : 'Connect MetaMask' }
       </Typography>

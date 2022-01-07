@@ -45,13 +45,13 @@ export default function About() {
 
           <div className={styles.textalign}>
           <div className={styles.grid}>
-            <Link href="/" passHref><a>
+            <Link href="/" passHref>
             <div className={styles.card}>
               <h2>Back &larr;</h2>
               <p>Return to the home page</p>
             </div>
-            </a></Link>
-            <Link href="/reveal">
+            </Link>
+            <Link href="/reveal" passHref>
             <div className={styles.card}>
               <h2>Reveal your NFT &rarr;</h2>
               <p>Why are you waiting?</p>

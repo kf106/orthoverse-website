@@ -6,13 +6,15 @@ import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react';
 import Web3Modal from 'web3modal';
 import { nftchain, nftparams, contractAddress, host } from '../nft.config';
-import ABI from '../abi/ABI.json';
+import ABI from '../abi/Orthoverse.json';
 import MetaMaskButton from '../components/metaMaskButton';
+import RevealButton from '../components/revealButton';
 
 export default function Reveal() {
   const [ provider, setProvider ] = useState(false);
   const [ connected, setConnected ] = useState(false);
   const [ mmaccount, mmsetAccount ] = useState('0x0000000000000000000000000000000000000000');
+  const [ revealed, setRevealed] = useState('hidden');
 
   useEffect(() => {
     if (typeof window !== "undefined" && typeof window.ethereum !== "undefined" ) {
@@ -50,6 +52,7 @@ export default function Reveal() {
       .then( (accounts) => {
         console.log(accounts);
         mmsetAccount(accounts[0]);
+        checkReveal(mmaccount);
      })
      .catch( (error) => {
        console.error('Error fetching accounts', error);
@@ -88,6 +91,14 @@ export default function Reveal() {
 
 const myLoader = () => {
   return host + "/api/img/" + mmaccount.slice(2, 42) + ".png"
+}
+
+function checkReveal(account) {
+  
+}
+
+function revealNFT(account) {
+  
 }
 
   return (
@@ -134,24 +145,88 @@ const myLoader = () => {
             <div>&nbsp;</div>
           </li>
 
-          <li style={{ display: connected ?  'block' : 'none' }}>
+          <li style={{ display: (connected && (revealed != 'revealed')) ?  'block' : 'none' }}>
             <div>
               <div>
                 <span className={styles.libold}>Step Two:</span>
               </div>
-              <p>
-                Marvel at the glory of your own personal ORTH token (unless you have already revealed it and
-                transfered it to someone else):
-              </p>
-              <div className={styles.grid}>
-                <div className={styles.nft}>
-                  <Image
-                    loader={ myLoader }
-                    src={ mmaccount.slice(2,42)}
-                    alt="ORTH token"
-                    width="360"
-                    height="360"
-                  />
+              <div>
+                <p>
+                  This is what your ORTH token looks like. There is no other token exactly the same.
+                </p>
+                <div className={styles.grid}>
+                  <div className={styles.nft}>
+                    <Image
+                      loader={ myLoader }
+                      src={ mmaccount.slice(2,42)}
+                      alt="ORTH token"
+                      width="360"
+                      height="360"
+                    />
+                  </div>
+                </div>
+                <p>
+                  Click the button below to reveal your token (involves a small Ethereum transaction):
+                </p>
+                { (revealed == 'hidden') && (
+                  <div onClick={() => revealNFT() }>
+                    <RevealButton state={ revealed } />
+                  </div>
+                )}
+                { (revealed != 'hidden') && (
+                  <div>
+                    <RevealButton state={ revealed } />
+                  </div>
+                )}
+                { ( revealed == 'revealing') && (
+                  <div>
+                    Please be patient - after you accept the MetaMask request it can take up 
+                    to half a minute for your NFT to be revealed.
+                  </div>
+                )}
+                { (revealed == 'rejected') && (
+                  <div> 
+                    <div>
+                      ❌ You cancelled your minting transaction.
+                    </div>
+                    <div>
+                      Reload the page to try again.
+                    </div>
+                  </div>
+                )}
+                { (revealed == 'insufficient') && (
+                  <div> 
+                    <div>
+                      ❌ You do not have enough funds in your wallet.
+                    </div>
+                    <div>
+                      Obtain some more ETH, and then reload the page to try again.
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </li>
+
+          <li style={{ display: (connected && (revealed == 'revealed')) ?  'block' : 'none' }}>
+            <div>
+              <div>
+                <span className={styles.libold}>Step Two:</span>
+              </div>
+              <div>
+                <p>
+                  Your NFT has been revealed and can be seen on NFT auction platforms such as OpenSea:
+                </p>
+                <div className={styles.grid}>
+                  <div className={styles.nft}>
+                    <Image
+                      loader={ myLoader }
+                      src={ mmaccount.slice(2,42)}
+                      alt="ORTH token"
+                      width="360"
+                      height="360"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
