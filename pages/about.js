@@ -24,7 +24,7 @@ export default function About() {
               How to mint an insane number of NFTs in one go
               <p>With the Orthoverse ERC1155 contract we have minted a different unique NFT 
                  with a different image into every Ethereum address that exists,
-                 or ever will exist.</p>
+                 or could exist.</p>
               <p>Your personal ORTH token can already be seen on the Ethereum blockchain,
                  and on this site on the <Link href="/reveal" passHref><a className={styles.inlink}>Reveal</a></Link> page.</p>
               <p>However, in order to view and trade it on NFT sales and
@@ -39,7 +39,7 @@ export default function About() {
               <p>(Assumes a gas price of 100 gwei and an ETH price of $3400)</p>
               <p>When we say &quot;an insane number&quot;, we are not kidding. Almost 1.5 quindecillion ORTH NFTs now
               exist on the blockchain. That&apos;s a number followed by 48 zeroes.</p>
-              <p>To put this in context: there is one ORTH token for each atom that exists in the Earth.</p>
+              <p>To put this in context: there is one ORTH token for every ten atoms in the Earth.</p>
             </div>
           </div>
 
