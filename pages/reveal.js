@@ -265,7 +265,7 @@ async function revealNFT(account) {
                   Your NFT is revealed and can be seen on NFT auction platforms such as&nbsp;
                   <div className={styles.inlink}>
                   <Link href="https://testnets.opensea.io/collection/the-orthoverse-land-collection">
-                    OpenSea
+                    OpenSea.io
                   </Link>
                   </div>
                 </div>
