@@ -262,10 +262,16 @@ async function revealNFT(account) {
               </div>
               <div>
                 <div>
-                  Your NFT is revealed and can be seen on NFT auction platforms such as OpenSea.
+                  Your NFT is revealed and can be seen on NFT auction platforms such as&nbsp;
+                  <div className={styles.inlink}>
+                  <Link href="https://testnets.opensea.io/collection/the-orthoverse-land-collection">
+                    OpenSea
+                  </Link>
+                  </div>
                 </div>
 
                   <div>
+                    <Link href="https://testnets.opensea.io/collection/the-orthoverse-land-collection">
                     <Image
                       loader={ myLoader }
                       src={ mmaccount.slice(2,42)}
@@ -273,6 +279,7 @@ async function revealNFT(account) {
                       width="360"
                       height="360"
                     />
+                    </Link>
                   </div>
 
               </div>
