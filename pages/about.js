@@ -64,7 +64,22 @@ export default function About() {
       </main>
 
       <footer className={styles.footer}>
-          Some text here
+
+        <div className={styles.main} className={styles.textalign}>
+          Brought to you by 
+          <div className={styles.inlink}>
+          <Link href="https://www.linkedin.com/in/keirf/" passHref>
+            Keir Finlow-Bates
+          </Link>
+          </div>
+          and 
+          <div className={styles.inlink}>
+          <Link href="https://www.linkedin.com/in/richardpiacentini/" passHref>
+            Richard Piacentini
+          </Link>
+          </div>
+        </div>
+
       </footer>
     </div>
   )

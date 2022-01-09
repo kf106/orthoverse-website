@@ -283,10 +283,42 @@ async function revealNFT(account) {
         </ul>
         </div>
         </div>
+
+        <div className={styles.textalign}>
+          <div className={styles.grid}>
+            <Link href="/about" passHref><a>
+            <div className={styles.card}>
+              <h2>Read more &rarr;</h2>
+              <p>Find out more about this project</p>
+            </div>
+            </a></Link>
+            <Link href="/" passHref>
+            <div className={styles.card}>
+              <h2>Return Home &rarr;</h2>
+              <p>Go back to the main page of the site</p>
+            </div>
+            </Link>
+          </div>
+        </div>
       </main>
 
       <footer className={styles.footer}>
-          Some text here
+
+        <div className={styles.main} className={styles.textalign}>
+          Brought to you by 
+          <div className={styles.inlink}>
+          <Link href="https://www.linkedin.com/in/keirf/" passHref>
+            Keir Finlow-Bates
+          </Link>
+          </div>
+          and 
+          <div className={styles.inlink}>
+          <Link href="https://www.linkedin.com/in/richardpiacentini/" passHref>
+            Richard Piacentini
+          </Link>
+          </div>
+        </div>
+
       </footer>
     </div>
   )
