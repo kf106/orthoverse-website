@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -13,14 +14,24 @@ export default function Home() {
 
       <main className={styles.main}>
         <div>
-          <div>
-            <h1 className={styles.title}>
-              Welcome to the Orthoverse
-            </h1>
+          <div className={styles.title}>
+            <div>
+            <Image
+              src="/orthoverselogo.png"
+              width="800"
+              height="247"
+            />
+            </div>
           </div>
 
-          <div className={styles.textalign}>
-            <div className={styles.description}>
+          <div className={styles.title}>
+            <div>
+            WELCOME TO THE ORTHOVERSE
+            </div>
+          </div>
+
+          <div className={styles.runner}>
+            <div>
               Where everyone already owns their land NFT
             </div>
           </div>
@@ -46,19 +57,10 @@ export default function Home() {
 
       <footer className={styles.footer}>
 
-        <div className={styles.main} className={styles.textalign}>
-          Brought to you by 
-          <div className={styles.inlink}>
-          <Link href="https://www.linkedin.com/in/keirf/" passHref>
-            Keir Finlow-Bates
-          </Link>
-          </div>
-          and 
-          <div className={styles.inlink}>
-          <Link href="https://www.linkedin.com/in/richardpiacentini/" passHref>
-            Richard Piacentini
-          </Link>
-          </div>
+        <div className={styles.footertext}>
+          Brought to you by <span className={styles.inlink}><Link href="https://www.linkedin.com/in/keirf/" passHref>Keir Finlow-Bates</Link></span> and <span className={styles.inlink}><Link href="https://www.linkedin.com/in/richardpiacentini/" passHref> Richard Piacentini</Link></span>
+          <br /><br />
+          Design by <span className={styles.inlink}><Link href="https://www.linkedin.com/in/philippe-borg-20525a22a/" passHref>PH Creative Studio</Link></span>
         </div>
 
       </footer>

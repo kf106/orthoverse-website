@@ -14,7 +14,7 @@ function MetaMaskButton( { account } ) {
     <Button className="w-64 h-10"
       disableElevation
       variant='contained'
-      color='secondary'
+      color='default'
     >
       <div><Image src={ MetaMaskImg } alt="MetaMask" height="30px" width="30px"/></div>
       <Typography variant='button'>

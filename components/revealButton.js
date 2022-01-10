@@ -1,7 +1,7 @@
 // components/mintButton.js
 import Image from 'next/image';
 import { Typography, Button } from '@material-ui/core'
-import ortho from '../public/ortho.svg';
+import ortho from '../public/favicon-32x32.png';
 
 const stateText = {
   "hidden": "Reveal your NFT",

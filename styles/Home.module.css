@@ -13,13 +13,13 @@
 }
 
 .main {
-  min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "tt07";
 }
 
 .footer {
@@ -29,14 +29,13 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
-  background: #dafada;
+  background: #000000;
+  color: #999999;
 }
 
 .footer a {
-  display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
 }
 
 .title a {
@@ -53,24 +52,42 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
+  font-family: "American";
 }
 
 .title {
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-  color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.runner {
+  color: #715e25;
+  text-decoration: none;
+  font-family: "tt07";
+  line-height: 1.15;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.footertext {
+  text-decoration: none;
+  font-family: "sans";
+  line-height: 1.15;
+  font-size: 1rem;
   text-align: center;
 }
 
 .description {
-  background: #fafafa;
+  background: #705e20;
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
-  color: #000;
+  font-family: "sans";
+  color: #ffffff;
   text-align: center;
   display: inline-block;
-  margin: 4rem 0;
+  margin: 1rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
 }
@@ -81,6 +98,20 @@
   font-size: 1.25rem;
   line-height: 1.5;
   text-align: left;
+}
+
+.delink {
+  color: #D0AE83;
+  text-decoration: none;
+  font-family: "American";
+}
+
+.delink:hover,
+.delink:focus,
+.delink:active {
+  color: #eebc59;
+  text-decoration: none;
+  font-family: "American";
 }
 
 .code {
@@ -100,17 +131,12 @@
   max-width: 800px;
 }
 
-.card {
-  background: #fafafa;
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
 }
 
 .nft {
@@ -126,17 +152,27 @@
   max-width: 360px;
 }
 
-.inlink {
-  color: #009aee;
+.card {
+  background: #705e20;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: left;
+  color: #999999;
   text-decoration: none;
+  border: 1px solid #705e20;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  max-width: 340px;
+  font-family: "sans";
+  font-size: 1rem;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  background: #dadafa;
-  color: #0070f3;
-  border-color: #0070f3;
+  background: #D0AE83;
+  color: #111111;
+  border-color: #111111;
 }
 
 .card h2 {
@@ -145,8 +181,22 @@
 }
 
 .card p {
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1.5;
+}
+
+.inlink {
+  color: #715e25;
+  text-decoration: none;
+  font-family: "American";
+}
+
+.inlink:hover,
+.inlink:focus,
+.inlink:active {
+  color: #D0AE83;
+  text-decoration: none;
+  font-family: "American";
 }
 
 .logo {
@@ -163,4 +213,10 @@
 
 .libold {
   font-weight: bold;
+  font-family: "tt07";
+}
+
+.lismall {
+  font-family: "sans";
+  font-size: 1rem;
 }

@@ -157,9 +157,20 @@ async function revealNFT(account) {
       </Head>
 
       <main className={styles.main}>
+
+          <div className={styles.title}>
+            <div>
+            <Image
+              src="/orthoverselogo.png"
+              width="800"
+              height="247"
+            />
+            </div>
+          </div>
+
         <div>
           <h1 className={styles.title}>
-            Reveal Your Token
+            REVEAL YOUR TOKEN
           </h1>
         </div>
 
@@ -258,12 +269,12 @@ async function revealNFT(account) {
           <li style={{ display: (connected && (revealed == 'revealed')) ?  'block' : 'none' }}>
             <div>
               <div>
-                <span className={styles.libold}>Revealed!</span>
+                <span className={styles.libold}>Revealed</span>
               </div>
               <div>
                 <div>
                   Your NFT is revealed and can be seen on NFT auction platforms such as&nbsp;
-                  <div className={styles.inlink}>
+                  <div className={styles.delink}>
                   <Link href="https://testnets.opensea.io/collection/the-orthoverse-land-collection">
                     OpenSea.io
                   </Link>
@@ -271,14 +282,14 @@ async function revealNFT(account) {
                 </div>
 
                   <div>
-                    <Link href="https://testnets.opensea.io/collection/the-orthoverse-land-collection">
+                    <Link href="https://testnets.opensea.io/collection/the-orthoverse-land-collection"><a>
                     <Image
                       loader={ myLoader }
                       src={ mmaccount.slice(2,42)}
                       alt="ORTH token"
                       width="360"
                       height="360"
-                    />
+                    /></a>
                     </Link>
                   </div>
 
@@ -311,19 +322,10 @@ async function revealNFT(account) {
 
       <footer className={styles.footer}>
 
-        <div className={styles.main} className={styles.textalign}>
-          Brought to you by 
-          <div className={styles.inlink}>
-          <Link href="https://www.linkedin.com/in/keirf/" passHref>
-            Keir Finlow-Bates
-          </Link>
-          </div>
-          and 
-          <div className={styles.inlink}>
-          <Link href="https://www.linkedin.com/in/richardpiacentini/" passHref>
-            Richard Piacentini
-          </Link>
-          </div>
+        <div className={styles.footertext}>
+          Brought to you by <span className={styles.inlink}><Link href="https://www.linkedin.com/in/keirf/" passHref>Keir Finlow-Bates</Link></span> and <span className={styles.inlink}><Link href="https://www.linkedin.com/in/richardpiacentini/" passHref> Richard Piacentini</Link></span>
+          <br /><br />
+          Design by <span className={styles.inlink}><Link href="https://www.linkedin.com/in/philippe-borg-20525a22a/" passHref>PH Creative Studio</Link></span>
         </div>
 
       </footer>

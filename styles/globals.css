@@ -2,16 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "American";
+  src: url("/fonts/american-captain-eternal.otf");
+}
+
+@font-face {
+  font-family: "tt07";
+  src: url("/fonts/tt0768m.ttf");
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-image: url("/assets/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #3d9619;
+  background-color: #000000;
 }
 
 * {
