@@ -1,7 +1,7 @@
 // components/mintButton.js
 import Image from 'next/image';
 import { Typography, Button } from '@material-ui/core'
-import ortho from '../public/favicon-32x32.png';
+import ortho from '../public/reveal.png';
 
 const stateText = {
   "hidden": "Reveal your NFT",
@@ -17,7 +17,7 @@ function RevealButton( { state } ) {
     <Button className="w-64 h-10"
       disableElevation
       variant='contained'
-      color='secondary'
+      color='default'
     >
       <div>
         <Image 
