@@ -17,7 +17,7 @@ export default function About() {
           <div className={styles.title}>
             <div>
             <Image
-              src="/orthoverselogo.png"
+              src="/orthoverselogo.jpg"
               width="800"
               height="247"
             />
