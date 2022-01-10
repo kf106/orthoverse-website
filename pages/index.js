@@ -38,6 +38,15 @@ export default function Home() {
 
           <div className={styles.textalign}>
           <div className={styles.grid}>
+            <div className={styles.nftimg}><Image src="/nft/nft1.jpg" layout="fill" /></div>
+            <div className={styles.nftimg}><Image src="/nft/nft2.jpg" layout="fill" /></div>
+            <div className={styles.nftimg}><Image src="/nft/nft3.jpg" layout="fill" /></div>
+            <div className={styles.nftimg}><Image src="/nft/nft4.jpg" layout="fill" /></div>
+          </div>
+          </div>
+
+          <div className={styles.textalign}>
+          <div className={styles.grid}>
             <Link href="/about" passHref><a>
             <div className={styles.card}>
               <h2>Read more &rarr;</h2>
