@@ -1,23 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const Jimp = require('jimp');
 import { useRouter } from 'next/router'
-import { tiles } from '../../../config/tiles.js';
-
-const palettes = [
-  [0xeeeeeeff, 0x666666ff, 0x88b889ff, 0x5bb859ff, 0x3b9718ff, 0x034e15ff, 0x002d06ff, 0x000000ff], // forest
-  [0xeeeeeeff, 0x666666ff, 0xb88889ff, 0xb85b59ff, 0x973b18ff, 0x4e0315ff, 0x2d0006ff, 0x000000ff], // rust
-  [0xeeeeeeff, 0x666666ff, 0x8889b8ff, 0x5b59b8ff, 0x3b1897ff, 0x03154eff, 0x00062dff, 0x000000ff], // dusk
-  [0xeeeeeeff, 0x666666ff, 0xbaab75ff, 0xc1a231ff, 0xab7b00ff, 0x4f4100ff, 0x2e2500ff, 0x000000ff], // desert
-  [0xeeeeeeff, 0x666666ff, 0xacacacff, 0xa6a6a6ff, 0x848484ff, 0x424242ff, 0x252525ff, 0x000000ff], // grays
-];
-
-
+import { tiles, palettes } from '../../../config/tiles.js';
 
 const handler = async (req, res) => {
   const id = req.query.id;
-  if (id.length != 44) {
-      res.status(404).send('Error 404')
-  } else {
+  if ((id.length == 46) || (id.length == 47)) {    
+    const castle = id.match(/-(.*)\./).pop();
+
     // build an array of which feature
     let tile_choice = [];
     let palette_choice = [];
@@ -37,6 +27,20 @@ const handler = async (req, res) => {
         image.setPixelColor(palettes[parseInt(id[39], 16) % 5][2], x, 10);
     }
 
+    if (castle != '0' && castle != '8') {
+     let base = parseInt(castle) - 1; 
+     if (base > 7) { base = base - 8};
+     console.log(base);
+     tile_choice[2 + 2 *6] = 8 + (base * 4);
+     tile_choice[3 + 2 *6] = 9 + (base * 4);
+     tile_choice[2 + 3 *6] = 10 + (base * 4);
+     tile_choice[3 + 3 *6] = 11 + (base * 4);
+     palette_choice[2 + 2 *6] = 6;
+     palette_choice[3 + 2 *6] = 6;
+     palette_choice[2 + 3 *6] = 6;
+     palette_choice[3 + 3 *6] = 6; 
+    }
+
     // scan through tiles
     const x_offset = 32;
     const y_offset = 40;
@@ -47,13 +51,16 @@ const handler = async (req, res) => {
           for (let scan_y = 0; scan_y <11; scan_y++) {
             const tile_color = tiles[tile][scan_y][scan_x];
             // console.log("tile color for " + scan_x.toString() + " and " + scan_y.toString() + " is " + tile_color.toString());
-            if (tile_color != 9) {
-              let swatch = 2;
+            if (tile_color != 9) { // tile color 9 is the alpha channel
+              let swatch = 2; // default to lake palette
               if (tile != 2) { 
-                swatch = palette_choice[x + y * 6];
+                swatch = palette_choice[x + y * 6]; // but switch away if it is not a lake
               }
-              if (tile == 4) {
+              if (tile == 4) { // forest palette
                 swatch = 0;
+              }
+              if (tile == 7) { // pine forest palette
+                swatch = 5;
               }
               const color = palettes[swatch][tile_color];
               image.setPixelColor(color, (x * 11) + x_offset - (y*6) + scan_x, (y * 6) + y_offset + scan_y);
@@ -71,6 +78,8 @@ const handler = async (req, res) => {
       res.setHeader('Content-Type', 'image/png');
       res.send(buffer)
     })
+  } else {
+   res.status(404).send('Error 404')
   }
 }
 

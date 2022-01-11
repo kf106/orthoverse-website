@@ -38,12 +38,20 @@ export default function handler(req, res) {
         }
       res.status(200).json(contract)
   } else {
-    const shortId = id.slice(0,-5);  // remove .json
-    if (shortId.length != 64) {
+    //https://orthoverse.io/api/metadata/0x38106f0c4af7aad085e7948def430581243654ce-1.json
+
+    let shortId = id.match(/0x(.*)-/).pop();  // remove -X.json postfix and 0x prefix
+    const castle = id.match(/-(.*)\./).pop();
+    console.log("Castle: " + castle);
+
+    if ((shortId.length > 40) || (parseInt(castle) > 15)) {
+      // address of token cannot be more than 40 characters
+      // and castle cannot be bigger than 15
       res.status(404).send('Error 404');
     } else {
+      shortId =  shortId.padStart(40, '0'); // pad to 40 characters
       const Lat = hexToLat(shortId.slice(-20));
-      const Long = hexToLong(shortId.slice(-40).slice(0, 20));
+      const Long = hexToLong(shortId.slice(0, 20));
       const metadata = {
         "attributes": [
           {
@@ -57,10 +65,11 @@ export default function handler(req, res) {
         ],
         "external_url": "https://orthoverse.io/",
         "name": "0x" + shortId.slice(-40),
-        "description": "Orthoverse Land for 0x" + shortId.slice(-40),
-        "image": "https://orthoverse.io/api/img/" + shortId.slice(-40) + ".png",
+        "description": "Orthoverse Land for 0x" + shortId,
+        "image": "https://orthoverse.io/api/img/" + shortId + "-" + castle + ".png",
         }
       res.status(200).json(metadata)
     }
+
   }
 }
