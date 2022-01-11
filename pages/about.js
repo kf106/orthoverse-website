@@ -20,6 +20,7 @@ export default function About() {
               src="/orthoverselogo.jpg"
               width="800"
               height="247"
+              alt="Orthoverse Logo"
             />
             </div>
           </div>

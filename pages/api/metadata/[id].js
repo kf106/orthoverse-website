@@ -43,6 +43,9 @@ export default function handler(req, res) {
     let shortId = id.match(/0x(.*)-/).pop();  // remove -X.json postfix and 0x prefix
     const castle = id.match(/-(.*)\./).pop();
     console.log("Castle: " + castle);
+    let realm = "Fantasy";
+    if ( parseInt(castle) > 7) { realm = "Futuristic"};
+    console.log("Realm: " + realm);
 
     if ((shortId.length > 40) || (parseInt(castle) > 15)) {
       // address of token cannot be more than 40 characters
@@ -61,6 +64,10 @@ export default function handler(req, res) {
           {
               "trait_type": "Longitude",
               "value": Long,
+          },
+          {
+              "trait_type": "Realm",
+              "value": realm,
           }
         ],
         "external_url": "https://orthoverse.io/",

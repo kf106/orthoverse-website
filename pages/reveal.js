@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react';
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
-import { nftchain, nftparams, contractAddress, host } from '../nft.config';
+import { nftchain, nftparams, contractAddress, host, opensea } from '../nft.config';
 import Orthoverse from '../abi/Orthoverse.json';
 import MetaMaskButton from '../components/metaMaskButton';
 import RevealButton from '../components/revealButton';
@@ -16,6 +16,7 @@ export default function Reveal() {
   const [ connected, setConnected ] = useState(false);
   const [ mmaccount, mmsetAccount ] = useState('0x0000000000000000000000000000000000000000');
   const [ revealed, setRevealed] = useState('hidden');
+  const [ level, setLevel] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined" && typeof window.ethereum !== "undefined" ) {
@@ -51,9 +52,9 @@ export default function Reveal() {
     window.ethereum
       .request({method: 'eth_requestAccounts'})
       .then( (accounts) => {
-        console.log(accounts);
+        console.log(accounts[0]);
         mmsetAccount(accounts[0]);
-        checkReveal(mmaccount);
+        checkReveal(accounts[0]);
      })
      .catch( (error) => {
        console.error('Error fetching accounts', error);
@@ -91,7 +92,7 @@ export default function Reveal() {
   }
 
 const myLoader = () => {
-  return host + "/api/img/" + mmaccount.slice(2, 42) + "-0.png"
+  return host + "/api/img/" + mmaccount.slice(2, 42) + "-" + level.toString() + ".png"
 }
 
 async function checkReveal(account) {
@@ -102,8 +103,23 @@ async function checkReveal(account) {
   const contract = new ethers.Contract(contractAddress, Orthoverse.abi, signer);
   const revealState = await contract.isRevealed();
   if (revealState != 0) {
+    console.log("Checking account " + account);
+    console.log("Reveal state is " + revealState.toString());
     setRevealed('revealed');
+    checkLevel(account);
   }
+}
+
+async function checkLevel(account) {
+  const web3Modal = new Web3Modal();
+  const connection = await web3Modal.connect();
+  const prov = new ethers.providers.Web3Provider(connection);
+  const signer = prov.getSigner();
+  const contract = new ethers.Contract(contractAddress, Orthoverse.abi, signer);
+  const level = await contract.castleLevel(account);
+  console.log(account)
+  console.log("Level is " +  level.toString());
+  setLevel(level);
 }
 
 async function revealNFT(account) {
@@ -114,7 +130,7 @@ async function revealNFT(account) {
   const signer = provider.getSigner();
   const contract = new ethers.Contract(contractAddress, Orthoverse.abi, signer);
   try {
-    const transaction = await contract.reveal();
+    const transaction = await contract.reveal({value: 400000000000000});
     transaction.wait()
     .then(response => {
       console.log("Transaction response:")
@@ -164,6 +180,7 @@ async function revealNFT(account) {
               src="/orthoverselogo.jpg"
               width="800"
               height="247"
+              alt="Orthoverse Logo" 
             />
             </div>
           </div>
@@ -275,14 +292,14 @@ async function revealNFT(account) {
                 <div>
                   Your NFT is revealed and can be seen on NFT auction platforms such as&nbsp;
                   <div className={styles.delink}>
-                  <Link href="https://testnets.opensea.io/collection/the-orthoverse-land-collection">
+                  <Link href={opensea}>
                     OpenSea.io
                   </Link>
                   </div>
                 </div>
 
                   <div>
-                    <Link href="https://testnets.opensea.io/collection/the-orthoverse-land-collection"><a>
+                    <Link href={opensea}><a>
                     <Image
                       loader={ myLoader }
                       src={ mmaccount.slice(2,42)}

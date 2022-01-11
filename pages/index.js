@@ -20,6 +20,7 @@ export default function Home() {
               src="/orthoverselogo.jpg"
               width="800"
               height="247"
+              alt="Orthoverse Logo"
             />
             </div>
           </div>
@@ -38,10 +39,10 @@ export default function Home() {
 
           <div className={styles.textalign}>
           <div className={styles.grid}>
-            <div className={styles.nftimg}><Image src="/nft/nft1.jpg" layout="fill" /></div>
-            <div className={styles.nftimg}><Image src="/nft/nft2.jpg" layout="fill" /></div>
-            <div className={styles.nftimg}><Image src="/nft/nft3.jpg" layout="fill" /></div>
-            <div className={styles.nftimg}><Image src="/nft/nft4.jpg" layout="fill" /></div>
+            <div className={styles.nftimg}><Image src="/nft/nft1.jpg" alt="Sample tile" layout="fill" /></div>
+            <div className={styles.nftimg}><Image src="/nft/nft2.jpg" alt="Sample tile" layout="fill" /></div>
+            <div className={styles.nftimg}><Image src="/nft/nft3.jpg" alt="Sample tile" layout="fill" /></div>
+            <div className={styles.nftimg}><Image src="/nft/nft4.jpg" alt="Sample tile" layout="fill" /></div>
           </div>
           </div>
 

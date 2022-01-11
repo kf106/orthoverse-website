@@ -13,6 +13,7 @@ export const nftparams = [{
                          }]
 
 export const host = "http://localhost:3000";
+export const opensea = "https://testnets.opensea.io/collection/the-orthoverse-land-collection-v3";
 export const contractAddress = "0x46DaEaC096fEf5a81a851e36c1744184eea83d8A";
 export const nftexplorer = nftparams[0].blockExplorerUrls[0];
 export const nftchain = nftparams[0].chainName;
