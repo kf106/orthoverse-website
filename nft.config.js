@@ -13,7 +13,7 @@ export const nftparams = [{
                          }]
 
 export const host = "http://localhost:3000";
-export const contractAddress = "0x7E72B0BbA1FC17F11D06d82B1CdB3fEE82a0De39";
+export const contractAddress = "0x6Ed5CbE5596afF601068Ce3A4a751F0abAAb8e55";
 export const nftexplorer = nftparams[0].blockExplorerUrls[0];
 export const nftchain = nftparams[0].chainName;
 
