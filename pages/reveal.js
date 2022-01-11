@@ -91,7 +91,7 @@ export default function Reveal() {
   }
 
 const myLoader = () => {
-  return host + "/api/img/" + mmaccount.slice(2, 42) + ".png"
+  return host + "/api/img/" + mmaccount.slice(2, 42) + "-0.png"
 }
 
 async function checkReveal(account) {
