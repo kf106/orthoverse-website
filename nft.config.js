@@ -1,20 +1,20 @@
 export const nftparams = [{
-                           "chainId": "0x4",
-                           "blockExplorerUrls": [ "https://rinkeby.etherscan.io" ],
-                           "chainName": "Rinkeby Test Network",
+                           "chainId": "0x1",
+                           "blockExplorerUrls": [ "https://etherscan.io" ],
+                           "chainName": "Ethereum Mainnet Network",
                            "nativeCurrency": {
                              "name": "Eth",
                              "symbol": "ETH",
                              "decimals": 18
                             },
                             "rpcUrls": [
-                              "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+                              "https://mainnet.infura.io/v3/0e01f5ccb98a48568dbcab8704632bff",
                             ]
                          }]
 
 export const host = "http://localhost:3000";
-export const opensea = "https://testnets.opensea.io/collection/the-orthoverse-land-collection-v3";
-export const contractAddress = "0x46DaEaC096fEf5a81a851e36c1744184eea83d8A";
+export const opensea = "https://opensea.io/collection/the-orthoverse-land-collection";
+export const contractAddress = "0xeDDe09C51343252fC83B9e5b6dE195A055AAcB56";
 export const nftexplorer = nftparams[0].blockExplorerUrls[0];
 export const nftchain = nftparams[0].chainName;
 
