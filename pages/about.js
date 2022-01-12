@@ -86,10 +86,11 @@ export default function About() {
 
         <div className={styles.footertext}>
           Brought to you by <span className={styles.inlink}><Link href="https://www.linkedin.com/in/keirf/" passHref>Keir Finlow-Bates</Link></span> and <span className={styles.inlink}><Link href="https://www.linkedin.com/in/richardpiacentini/" passHref> Richard Piacentini</Link></span>
-          <br /><br />
+          <br />
           Design by <span className={styles.inlink}><Link href="https://www.linkedin.com/in/philippe-borg-20525a22a/" passHref>PH Creative Studio</Link></span>
+          <br />
+          Make sure you read the <span className={styles.inlink}><Link href="/terms" passHref>Terms and Conditions</Link></span>
         </div>
-
       </footer>
     </div>
   )
