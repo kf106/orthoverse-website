@@ -30,7 +30,7 @@ export default function handler(req, res) {
   if ( id == 'contract.json') {
       const contract = {
           "name": "The Orthoverse Land Collection",
-          "description": "The Orthoverse is the largest NFT collection in existence, with over 1.4 quindecillion tokens in existence. Every Ethereum address already has an NFT representing a parcel of land in the Orthoverse. Vist our site to reveal your NFT and to learn more about the project.",
+          "description": "The Orthoverse is the largest NFT collection in existence, with over 1.4 quindecillion tokens in existence. Every Ethereum address already has an NFT representing a parcel of land in the Orthoverse. Visit our site to reveal your NFT and to learn more about the project.",
           "image": "https://orthoverse.io/logo.png",
           "external_link": "https://orthoverse.io/",
           "seller_fee_basis_points": 250,
