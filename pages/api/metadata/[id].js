@@ -65,7 +65,7 @@ export default function handler(req, res) {
       const Lat = hexToLat(shortId.slice(-20));
       const Long = hexToLong(shortId.slice(0, 20));
       // 0-7 Fantasy realm - 8-15 Futuristic realm
-      const castleLevel = castle % 8;
+      const castleLevel = (castle % 8).toString();
       const metadata = {
         attributes: [
           {
