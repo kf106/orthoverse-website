@@ -76,9 +76,9 @@ const handler = async (req, res) => {
         }
       }
     } 
-    await image.resize(360, 360, Jimp.RESIZE_NEAREST_NEIGHBOR);
-    await Jimp.loadFont(Jimp.FONT_SANS_12_BLACK).then(font => {
-      image.print(font, 36, 16, "0x" + id.slice(0,40));
+    await image.resize(420, 420, Jimp.RESIZE_NEAREST_NEIGHBOR);
+    await Jimp.loadFont(Jimp.FONT_SANS_14_BLACK).then(font => {
+      image.print(font, 40, 18, "0x" + id.slice(0,40));
     });
     await image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
       res.statusCode = 200;
