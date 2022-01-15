@@ -1,14 +1,20 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const Jimp = require('jimp');
-import { useRouter } from 'next/router'
-import { tiles, palettes } from '../../../config/tiles.js';
+import { useRouter } from 'next/router';
+import { tiles_futuristic, palettes_futuristic } from '../../../config/tiles-futuristic.js';
+import { tiles_fantasy, palettes_fantasy } from '../../../config/tiles-fantasy.js';
 
 const handler = async (req, res) => {
   const id = req.query.id;
   if ((id.length == 46) || (id.length == 47)) {    
     const castle = id.match(/-(.*)\./).pop();
+    console.log("Castle: " + castle);
+   
+    // select the correct tiles and palettes depending on whether its fantasy or futuristic
+    const tiles = (parseInt(castle) > 7) ? tiles_futuristic : tiles_fantasy;
+    const palettes = (parseInt(castle) > 7) ? palettes_futuristic : palettes_fantasy;
 
-    // build an array of which feature
+    // build an array of which feature and what colors
     let tile_choice = [];
     let palette_choice = [];
     for (let i = 0; i < 36; i++) {
@@ -16,17 +22,18 @@ const handler = async (req, res) => {
         palette_choice.push((parseInt(id[i], 16) & 8) / 8);
     }
 
-    const image = await new Jimp(105,105, palettes[parseInt(id[39], 16) % 5][5]);
+    const image = await new Jimp(105,105, palettes[parseInt(id[39], 16) % 7][8]);
     for (let y = 4; y < 10; y++) {
       for (let x = 6; x < 99; x++) {
-        image.setPixelColor(palettes[parseInt(id[39], 16) % 5][3], x, y);
+        image.setPixelColor(palettes[parseInt(id[39], 16) % 7][9], x, y);
       }
     }
     for (let x = 6; x < 99; x++) {
-        image.setPixelColor(palettes[parseInt(id[39], 16) % 5][2], x, 3);
-        image.setPixelColor(palettes[parseInt(id[39], 16) % 5][2], x, 10);
+        image.setPixelColor(palettes[parseInt(id[39], 16) % 7][10], x, 3);
+        image.setPixelColor(palettes[parseInt(id[39], 16) % 7][10], x, 10);
     }
 
+    // overwrite with castle image if there is one
     if (castle != '0' && castle != '8') {
      let base = parseInt(castle) - 1; 
      if (base > 7) { base = base - 8};
@@ -41,7 +48,7 @@ const handler = async (req, res) => {
      palette_choice[3 + 3 *6] = 6; 
     }
 
-    // scan through tiles
+    // scan through tiles and render them
     const x_offset = 32;
     const y_offset = 40;
     for (let x = 0; x <6; x++) {
@@ -56,10 +63,10 @@ const handler = async (req, res) => {
               if (tile != 2) { 
                 swatch = palette_choice[x + y * 6]; // but switch away if it is not a lake
               }
-              if (tile == 4) { // forest palette
+              if ((tile == 4) && (parseInt(castle) < 8 )) { // forest palette
                 swatch = 0;
               }
-              if (tile == 7) { // pine forest palette
+              if ((tile == 7) && (parseInt(castle) < 8 )) { // pine forest palette
                 swatch = 5;
               }
               const color = palettes[swatch][tile_color];
